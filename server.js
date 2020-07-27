@@ -4,7 +4,18 @@ const mongoose = require('mongoose');
 const ShortUrl = require('./models/shortUrl');
 const shortUrl = require('./models/shortUrl');
 
-mongoose.connect('mongodb://localhost/urlShortenerDb',
+require('dotenv').config();
+
+const MONGODB_USERNAME = process.env.MONGODB_USERNAME;
+const MONGODB_PASSWORD = process.env.MONGODB_PASSWORD;
+const NODE_ENV = process.env.NODE_ENV;
+
+const mongooseURI = `mongodb:${MONGODB_USERNAME}//:${MONGODB_PASSWORD}@ds143474.mlab.com:43474/heroku_g6frgrs2`;
+//const mongooseURI = 'mongodb://localhost/urlShortenerDb';
+
+
+mongoose.connect(
+    mongooseURI,
     { 
         useNewUrlParser: true,
         useUnifiedTopology: true
