@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>URL Shortener</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="container">
+        <h1>URL Shrinker</h1>
+        <form class="my-4 form-inline" action="/shortUrls" method="POST">
+            <label class="sr-only" for="fullUrl">URL</label>
+            <input placeholder="Url" style="min-width: 200px; max-width: 400px;" class="form-control mr-2 col" required
+                name="fullUrl" id="fullUrl" type="url">
+            <button class="btn btn-success btn-responsive" type="submit">Let's shrink your link!</button>
+        </form>
+        <table class="table table-striped table-hover table-dark tabele-responsive">
+            <thead>
+                <tr>
+                    <th>Full Url</th>
+                    <th>ShortUrl</th>
+                    <th>Clicks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shortUrls.forEach(shortUrl => { %>
+                <tr>
+                        <td>
+                        <a href="<%= shortUrl.full %>"><%= shortUrl.full %></a>
+                    </td>
+                    <td>
+                        <a href="<%= shortUrl.short %>"><%= shortUrl.short %></a>
+                    </td>
+                    <td>
+                        <a><%= shortUrl.clicks %></a>
+                    </td>
+                </tr>
+                <% }) %>
+                <tr>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
